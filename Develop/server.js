@@ -3,6 +3,7 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 const path = require ("path");
 const fs = require ("fs");
+const {v4: uuid} = require ("uuid");
 
 app.use(express.static("public"))
 
@@ -26,6 +27,32 @@ app.get("/api/notes", (req,res) =>{
         const notes = JSON.parse(data)
         res.json(notes)
     })
+})
+// api route - post request, receive note, add to db.json, then return new note
+app.post("/api/notes", (req,res)=>{
+    const{title,text} = req.body;
+    if (title && text){
+        const newNote = {
+            title,
+            text,
+            uuid: uuid()
+        }
+        fs.readFile("./db/db.json", (err, data) =>{
+            if (err){
+                console.log(err)
+                return res.status(500).json({message:"Internal Server Error"});
+            }
+            let notes = JSON.parse(data)
+            notes.push(newNote);
+            fs.writeFile("./db/db.json", JSON.stringify(notes), (err) =>{
+                if (err){
+                    console.log(err)
+                    return res.status(500).json({message:"Internal Server Error"});
+                }
+                res.json(newNote)
+            })
+        })
+    }
 })
 
 app.listen(PORT, () =>
