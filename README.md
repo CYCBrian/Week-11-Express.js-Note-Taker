@@ -27,7 +27,7 @@ The Note Taker application is designed to facilitate note-taking by providing an
 
 ## Demo
 
-![Watch the app in action!](https://app.screencastify.com/v2/watch/rYdpTov2bIstKG2QfN6m)
+[Watch the app in action!](https://app.screencastify.com/v2/watch/rYdpTov2bIstKG2QfN6m)
 
 ## Getting Started
 
