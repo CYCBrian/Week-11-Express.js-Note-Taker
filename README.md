@@ -39,7 +39,7 @@ To run this application locally, follow these steps:
 
 OR
 
-- [Click here to access the app deployed via Heroku](your-heroku-app-url)
+- [Click here to access the app deployed via Heroku](https://pure-ocean-62493-bf1d3e6fee62.herokuapp.com/)
 
 ## Usage
 
